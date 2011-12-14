@@ -1,0 +1,20 @@
+.page-header
+  h1 Submit A Screenshot of <span class="siri">Siri</span>
+  
+div
+  h4 Using your iPhone? 
+  | Email your submissions to <a href="mailto:siri@tesoriere.com">siri@tesoriere.com</a> with a caption and/or your name!
+
+hr
+
+- form_for(image, {action: path_to.images + '/' + request.params.type, method: 'post', id: "image_form", enctype: 'multipart/form-data'}, function (form) {
+  != form.input('type', {value: request.params.type, type: 'hidden'})
+  if request.params.type == 'tip' || (typeof request.form !== 'undefined' && request.form.fields.type == 'tip')
+    != partial('images/form_tip.jade', {locals: {form: form, image: image}})
+  else
+    != partial('images/form.jade', {locals: {form: form, image: image}})    
+  .actions
+    != form.submit('Create '+(request.params.type == 'tip' ? 'Tip' : 'Image'), {class: 'btn primary'})
+    span= ' or '
+    != link_to('Cancel', path_to.images, {class: 'btn danger'})
+- });

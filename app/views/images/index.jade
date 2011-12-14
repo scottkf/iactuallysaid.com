@@ -1,0 +1,44 @@
+.page-header
+  h2
+    | What <span class="siri">Siri</span> Said
+    small
+      if controller.actionName == "byuser"
+        | to this one dude
+      else
+        | though you might've meant otherwise
+#images
+  .wide
+    != partial("image", {collection:images, as: 'imag'})
+
+
+div.pagination(style="clear: both")
+  - var page = parseInt(page)
+  if total_pages > 1
+    ul
+      li(class="prev disabled")
+        a(href=(page-1 == 0? null : "/page/"+(page-1))) &larr; Previous
+      - for(var i = 1; i< total_pages+1; i++) {
+        li(class=(page == i ?"active" : null))
+          a(href='/page/'+i)= i
+      - }
+      li.next
+        a(href=(page+1 > total_pages? null : "/page/"+(page+1))) Next &rarr;
+
+div
+    != link_to('Submit a new one', path_to.new_image, {class: 'btn'})
+
+
+script
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'sirisays'; // required: replace example with your forum shortname
+  var disqus_url = 'http://iactuallysaid.com';
+  // var disqus_developer = '1';
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+
+noscript
+  | Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>

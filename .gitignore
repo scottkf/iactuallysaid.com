@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+akismet.coffee
+oauth_providers.coffee
+session_key.coffee
+amazon.coffee
+database.json
+.git-old

@@ -1,0 +1,21 @@
+{ "development":
+  { "driver":   "mongoose"
+  , "host":     "localhost"
+  , "database": "sirisays-dev"
+  }
+, "test":
+  { "driver":   "mongoose"
+  , "host":     "localhost"
+  , "database": "sirisays-test"
+  }
+, "staging":
+  { "driver":   "mongoose"
+  , "host":     "localhost"
+  , "database": "sirisays-staging"
+  }
+, "production":
+  { "driver":   "mongoose"
+  , "host":     "xxx:xxx@xxx.mongolab.com:27637"
+  , "database": "xxx"
+  }
+}

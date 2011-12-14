@@ -1,0 +1,21 @@
+.clearfix
+  != form.label("A witty title*")
+  .input    
+    != form.input('title')
+
+.clearfix
+  != form.label("A clever caption")
+  .input    
+    != form.textarea('caption')
+    .help-block Enter a witty caption!
+
+.clearfix
+  != form.label("Your name*")
+  .input    
+    != form.input('user')
+
+            
+.clearfix
+  != form.label("The screenshot!*")
+  .input    
+    != form.input('file', {type: 'file'}) 

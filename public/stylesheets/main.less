@@ -1,0 +1,176 @@
+@import "/public/stylesheets/bootstrap";
+
+
+body {
+/*	background-color: black;*/
+}
+
+.siri {
+  color: @purple;
+}
+
+.topbar-inner,
+.topbar .fill {
+  background-color: #222;
+  #gradient > .vertical(#333, #222);
+  @shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+  .opacity(90);
+  &:hover {
+   .opacity(100);
+  }
+}
+
+ins {
+  margin-top: 20px !important;
+}
+
+body > .container {
+  padding-top: 40px;
+}
+
+.well.white {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+}
+.well.right-ad {
+  ins {
+    margin-top: 0px !important;
+  }
+}
+
+.rss img {
+  width: 30px;
+  height: auto;
+}
+
+#left {
+  background: url(/images/sidebar_shadow.png) no-repeat top right;
+  padding-top: 40px;
+  .page-header, #disqus_thread, hr {
+    width: 550px;
+  }
+}
+#right {
+  padding-top: 40px;
+}
+
+.top-rated {
+  text-transform: capitalize;
+  li {
+    .score {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .title {
+    }
+    .label {
+      font-size: 1.1em
+    }    
+  }
+}
+
+.social-links {
+  .google {
+    margin-left: 25px;
+  }
+}
+
+blockquote {
+  word-wrap: break-word;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  padding: 30px 20px 30px 20px;
+  padding: 20px 15px;
+}
+
+.comment_count {
+  font-size: 0.8em;
+  display: block;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+#images {
+  clear: both;
+  .wide {
+    .score.top {
+      position: static;
+      font-size: 0.80em;
+    }      
+    span.score.bottom {
+      position: absolute;
+      top: -10px;
+      left: 310px;
+      font-size: 2em;
+
+    }
+    .article {
+      > div + div {
+        display: none;
+      }
+      > div {
+        .columns(9)
+      }
+      .body {
+      }
+    }
+    .label.warning + .label {
+      margin-left: 10px;
+    }
+    .rank {
+      color: white;
+    }
+    .body {
+      margin-top: 1em;
+    }
+    .btn.hate {
+      margin-left: 10px;
+    }
+    .success {
+      .gradientBar(lighten(@purple, 20%), @purple);
+    }
+    hr {
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    h3 {
+      text-transform: capitalize;
+      line-height: 18px;
+      margin-bottom: 8px;
+    }
+    h5 {
+      a {
+        color: #404040;
+      }
+    }
+    h6 {
+      line-height: 18px;
+      a {
+        color: lighten(@linkColor, 25%);
+      }
+    }
+    .row {
+      position: relative;
+      
+    }
+    img {
+      width: 250px;
+      height: 376px;
+    }
+    a {
+      
+    }
+  }
+}
+
+nav#auth {
+  > div {
+    display: block;
+    .makeColumn(3);
+  }
+  + div {
+    clear: both;
+  }
+}
+

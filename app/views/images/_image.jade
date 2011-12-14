@@ -1,0 +1,58 @@
+if imag != null
+  - var image = imag
+
+.row(class=(image.url == '' ? 'article': 'image'))
+  .span5
+    - var voted = false
+    - var user_id = (user ? user._id : request.session.id)
+    - image.upvotes.forEach(function(i) {
+    -   if (i.user_id == user_id) {voted = 'loved'}
+    - })
+    - image.downvotes.forEach(function(i) {
+    -   if (i.user_id == user_id) {voted = 'hated'}
+    - })
+    if image.title
+      h5
+        != link_to(image.title, path_to.image(image))
+    h6 
+      | Submitted by 
+      a(href=path_to.user(image.user_id))!{image.user}
+      br 
+      small about&nbsp;
+        abbr(title=image.date.toISOString()).timeago !{image.date.toISOString()}
+      br
+      span(class="score label top warning "+image.id)= image.score
+      if voted != "loved" && voted != "hated"
+        != link_to('+', path_to.loveit_image(image), {class: 'label rank success vote love '+image.id, method: 'post', remote: true})
+        != link_to('-', path_to.hateit_image(image), {class: 'label rank important vote hate '+image.id, method: 'post', remote: true})
+      else
+        
+      
+    if image.caption && !image.url
+      div.body
+        != markdown.parse(image.caption)
+    else
+      if image.caption
+        blockquote
+          p= image.caption
+          
+
+    br
+    if image.url != ''
+      span(class="score label warning bottom "+image.id)= image.score
+    if voted == "loved"
+      .btn.success.disabled Liked it
+    else if voted == 'hated'  
+      .btn.danger.disabled Hated it
+    else
+      != link_to('Like it - '+image.upvotes.length, path_to.loveit_image(image), {class: 'btn success vote love '+image.id, method: 'post', remote: true})
+      != link_to('Hate it - '+image.downvotes.length, path_to.hateit_image(image), {class: 'btn danger vote hate '+image.id, method: 'post', remote: true})
+  
+  .span5
+    a(href=path_to.image(image))
+      img(src=image.url, alt=image.url)
+
+  a(href=path_to.image(image)+'#disqus_thread').comment_count.span16 Show Comments
+        
+  if typeof lastInCollection === 'undefined' || !lastInCollection
+    hr

@@ -1,0 +1,40 @@
+- var controllerName = controller.controllerName
+- var action = controller.actionName
+.topbar-wrapper(style='z-index:5')
+  .topbar(data-dropdown="dropdown")
+    .topbar-inner
+      .container
+        h3
+          a(href='/') Siri Says What
+        ul.nav
+          li.dropdown.upload(class=(controllerName == 'images' && action == 'new' ? 'active' : ''))
+            a(href="#").dropdown-toggle Submit Your Own
+            ul.dropdown-menu
+              li
+                a(href=path_to.new_image + '/siri') Funny thing
+              li
+                a(href=path_to.new_image + '/tip') Tip
+          li.dropdown
+            - var sort = ["Top Rated", "Most Recent"]
+            if request.params.type == "top-rated"
+              a(href="#").dropdown-toggle Top Rated
+              ul.dropdown-menu
+                li
+                  a(href='/images/sort/most-recent') Most Recent
+            else if request.params.type == "most-recent"
+              a(href="#").dropdown-toggle Most Recent
+              ul.dropdown-menu
+                li
+                  a(href='/images/sort/top-rated') Top Rated
+            
+            else
+              a(href="#").dropdown-toggle Sort By
+              ul.dropdown-menu
+                li
+                  a(href='/images/sort/top-rated') Top Rated
+                li
+                  a(href='/images/sort/most-recent') Most Recent          
+          li(class=(controllerName == 'pages' && action == 'about'? 'active' : ''))
+            a(href=path_to.about) About
+        form.pull-left(action='')
+          // input(type='text', placeholder='Search')

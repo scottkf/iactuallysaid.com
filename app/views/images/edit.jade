@@ -1,0 +1,10 @@
+.page-header
+  h1 Edit image
+
+- form_for(image, {action: path_to.image(image), method: 'PUT', id: "image_form"}, function (form) {
+  != partial('images/form.jade', {locals: {form: form, image: image}})
+  .actions
+    != form.submit('Update image', {class: 'btn primary'})
+    span= ' or '
+    != link_to('Cancel', path_to.image(image), {class: 'btn'})
+- });

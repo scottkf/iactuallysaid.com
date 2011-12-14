@@ -1,0 +1,4 @@
+module.exports = 
+    bucket: 'xxx.com'
+	public: 'xxx'
+    private: 'xxx+xx+xx'

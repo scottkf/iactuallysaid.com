@@ -1,0 +1,113 @@
+!!! 5
+html
+    head
+        title Interesting things Siri has said and continues to say! Easter eggs and more!
+        link(rel="stylesheet", type="text/css", href="/stylesheets/main.css")
+        link(href=path_to.rss,rel="alternate",title="RSS",type="applicaiton/rss+xml")
+        != javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', 'rails', 'application', 'jquery.timeago', 'bootstrap-modal', 'bootstrap-dropdown', 'bootstrap-twipsy', 'bootstrap-popover')
+        != csrf_meta_tag()
+        meta(name="description",content="An aggregation and collection of all siri easter eggs.")
+        meta(name="keywords", content="siri, iphone4s, siri says, siri said, interesting shit siri says, sirisms")
+    body
+        a(href="http://github.com/scottkf/iactuallysaid.com")
+          img(style="position: fixed; top: 0; right: 0; border: 0; z-index: 12000",src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png",alt="Fork me on GitHub")
+        .container
+            != partial('nav/main')
+            .row
+              unless controller.controllerName == "pages"
+                .span10#left
+                  - var flash = request.flash('info').pop(); if (flash) {
+                      .alert-message.info 
+                        != flash
+                  - }
+
+                  - flash = request.flash('error').pop(); if (flash) {
+                      .alert-message.error 
+                        != flash
+                  - }
+                
+                  != body
+                .span6#right
+                  .page-header
+                    h2 
+                      | Top Rated
+                  ul.unstyled.top-rated
+                    - request.images.forEach(function(image) {
+                      li
+                        a(href=path_to.image(image))
+                          .row
+                            div(class="span1 label "+(image.score > 0 ? "notice" : "important")+" score "+image.id)
+                              =image.score
+                            .title.span4= image.title
+                    - })
+                  .well.social-links
+                    div#fb-root &nbsp;
+                    script                      
+                      (function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) {return;}
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=151628461599792";
+                        fjs.parentNode.insertBefore(js, fjs);
+                      }(document, 'script', 'facebook-jssdk'));
+                    .row
+                      .span1.facebook
+                        .fb-like(data-href="http://www.facebook.com/pages/Siri-says-what/293354410693541",data-send="false",data-layout="box_count",data-width="50",data-show-faces="false")                    
+                      .span1.twitter
+                        a(href="https://twitter.com/share",class="twitter-share-button",data-url="http://iactuallysaid.com",data-count="vertical",data-via="Stumped Siri",data-related="WastedOn") Tweet
+                        script(type="text/javascript",src="http://platform.twitter.com/widgets.js")
+                      .span1.linkedin
+                        script(type="text/javascript",src="http://platform.linkedin.com/in.js")
+                        script(type="IN/Share",data-url="http://shitsirisays.info",data-counter="top")
+                      .span1.google
+                        | <g:plusone size="tall" href="http://iactuallysaid.com"></g:plusone>
+                        script
+                          (function() {
+                            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                            po.src = 'https://apis.google.com/js/plusone.js';
+                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                          })();
+                      .span1.rss
+                        a(href=path_to.rss)
+                          img(src="/images/rss.gif",alt="rss",title="rss")
+                  .well.facebook
+                    |<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FSiri-says-what%2F293354410693541&amp;width=300&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;height=290&amp;appId=212895632083762" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:290px;" allowTransparency="true"></iframe>
+                  .well.right-ad
+                    script
+                      google_ad_client = "ca-pub-3702252315546866";
+                      /* Siri Says - image right */
+                      google_ad_slot = "8219005131";
+                      google_ad_width = 300;
+                      google_ad_height = 250;
+                    script(type="text/javascript",src="http://pagead2.googlesyndication.com/pagead/show_ads.js")
+              else
+                .span16
+                  != body
+
+            script
+              var _gaq = _gaq || [];
+              _gaq.push(['_setAccount', 'UA-6824117-8']);
+              _gaq.push(['_trackPageview']);
+
+              (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+              })();
+
+            unless (controller.actionName == 'privacy') || controller.actionName == 'about'
+              script(type="text/javascript")
+                google_ad_client = "ca-pub-3702252315546866";
+                google_ad_slot = "6459366993";
+                google_ad_width = 728;
+                google_ad_height = 90;
+              script(type="text/javascript", src="http://pagead2.googlesyndication.com/pagead/show_ads.js")
+      footer  
+        .container
+          p.pull-right
+            a(href="#") Back to top
+          p.
+            Subscribe to our RSS <a href="/rss">feed here</a>. <br/ >
+            Site by <a href="http://tesoriere.com">Tesoriere</a>.<br />
+            Built on <a href="http://twitter.github.com/bootstrap">Bootstrap</a> from Twitter and <a href="http://railwayjs.com">RailwayJS</a>.<br />
+            Your privacy matters to us, <a href="/privacy">view our privacy policy</a>.

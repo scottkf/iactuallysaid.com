@@ -1,0 +1,33 @@
+- if (!everyauth.loggedIn)
+  h2= t('auth.notauthenticated')
+  nav#auth
+    #fb-login.fb_button
+      a.fb_button_medium(href='/auth/facebook')
+        span#fb_login_text.fb_button_text
+          = t('auth.connect') + ' Facebook'
+    #twitter-login.fb_button
+      a(href='/auth/twitter', style='border: 0px')
+        img(style='border: 0px', src='/images/auth/twitter.png')
+    #github-login
+      a(href='/auth/github', style='border: 0px')
+        img(style='border: 0px', src='/images/auth/github.png')
+    #instagram-login
+      a(href='/auth/instagram', style='border: 0px')
+        img(style='border: 0px', src='/images/auth/instagram.png')
+- else
+  h2= t('auth.authenticated')
+  #user-id !{t('auth.loggedin')} `user.id` #{user.id} - `everyauth.user.id` #{everyauth.user.id}
+  - if (everyauth.facebook)
+    h3 Facebook !{t('auth.userdata')}
+    p= JSON.stringify(everyauth.facebook.user)
+  - if (everyauth.twitter)
+    h3 Twitter !{t('auth.userdata')}
+    p= JSON.stringify(everyauth.twitter.user)
+  - if (everyauth.github)
+    h3 GitHub !{t('auth.userdata')}
+    p= JSON.stringify(everyauth.github.user)
+  - if (everyauth.instagram)
+    h3 Instagram !{t('auth.userdata')}
+    p= JSON.stringify(everyauth.instagram.user)
+  h3
+    a(href='/logout')= t('auth.logout')

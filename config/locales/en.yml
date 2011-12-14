@@ -1,0 +1,14 @@
+en:
+  what:
+    updating: "Updating"
+  
+  auth:
+    notauthenticated: "Not authenticated"
+    connect: "Connect with"
+    logout: "Logout"
+    loggedin: "Logged in as"
+    authenticated: "Authenticated"
+    userdata: "user data"
+
+
+ 

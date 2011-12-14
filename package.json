@@ -1,0 +1,34 @@
+{ "name": "shitsirisays.com"
+, "version": "0.0.1"
+, "engines": ["node >= 0.6.0"]
+, "main": "server.js"
+, "dependencies":
+  { "jade-ext":  ">= 0"
+  , "jade":      ">= 0"
+  , "redis":     ">= 0"
+  , "express":          ">= 2.2.2"
+  , "connect":          ">= 1.4.2"
+  , "railway":          ">= 0.1.6"
+  , "yaml":             ">= 0.1.2"
+  , "coffee-script":    ">= 1.1.1"
+  , "mime":             ">= 1.2.2"
+  , "qs":               ">= 0.1.0"
+  , "mongoose":         ">= 1.3.6"
+  , "mongodb":          ">= 0.9.4-5"
+  , "connect-mongodb":  ">= 0.3.0"
+  , "connect-redis":    ">=0"
+  , "mongoose-auth":    ">= 0.0.2"
+  , "less":             ">= 1.0.0"
+  , "connect-less":     ">= 0.1.0"
+  , "ability":          ">= 0"
+  , "formidable":       ">= 0"
+  , "knox":             ">= 0"
+  , "discount":         ">= 0"
+  , "rss":              ">= 0"
+  , "akismet":       ">= 0"
+  , "async":         ">= 0"
+  }
+, "scripts":
+  { "test": "nodeunit test/*/*"
+  }
+}
