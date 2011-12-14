@@ -2,7 +2,7 @@
 mongoose = require('mongoose')
 Schema = mongoose.Schema
 
-conf = require('../config/oauth_providers')
+conf = require(__dirname + '/config/oauth_providers')
 
 UserSchema = new Schema({})
 
